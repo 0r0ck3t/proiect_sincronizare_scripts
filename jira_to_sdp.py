@@ -223,23 +223,23 @@ headers_sdp = {"authtoken": "5CF839EE-0BC3-4EC2-B752-8037F8F42B02", "PORTALID":"
 # print('Comments: ', db.get_comment_sync(0))
 # print('issues status: ', db.get_status_sync(0))
 
-# cnt1, cnt2, cnt3 = 0, 0, 0 
-cnt1, cnt2, cnt3 = int(db.get_counter()[0][1]), int(db.get_counter()[0][2]), int(db.get_counter()[0][3])
+cnt1, cnt2, cnt3 = 0, 0, 0 
+# cnt1, cnt2, cnt3 = int(db.get_counter()[0][1]), int(db.get_counter()[0][2]), int(db.get_counter()[0][3])
 # print(cnt1, cnt2, cnt3)
 
-for row in db.get_ticket_sync(cnt1):
-    cnt1, key, _ = row
-    create_sd_ticket(key, JIRA_URL, JIRA_AUTH, SDP_URL, headers_sdp)
+# for row in db.get_ticket_sync(cnt1):
+#     cnt1, key, _ = row
+#     create_sd_ticket(key, JIRA_URL, JIRA_AUTH, SDP_URL, headers_sdp)
 
-for row in db.get_comment_sync(cnt2):
-    cnt2, key, comm_id, _ = row
-    sdp_id = db.get_sdp_id(key)
-    copy_comment_to_sdplus(sdp_id, comm_id, SDP_URL, headers_sdp, JIRA_URL, key, JIRA_AUTH)
+# for row in db.get_comment_sync(cnt2):
+#     cnt2, key, comm_id, _ = row
+#     sdp_id = db.get_sdp_id(key)
+#     copy_comment_to_sdplus(sdp_id, comm_id, SDP_URL, headers_sdp, JIRA_URL, key, JIRA_AUTH)
 
-for row in db.get_status_sync(cnt3):
-    cnt3, key, status = row
-    sd_status = set_status(status)
-    ticket_id = db.get_sdp_id(key)
-    update_status(ticket_id, SDP_URL, headers_sdp, sd_status)
+# for row in db.get_status_sync(cnt3):
+#     cnt3, key, status = row
+#     sd_status = set_status(status)
+#     ticket_id = db.get_sdp_id(key)
+#     update_status(ticket_id, SDP_URL, headers_sdp, sd_status)
 
 db.counter_db(cnt1, cnt2, cnt3)

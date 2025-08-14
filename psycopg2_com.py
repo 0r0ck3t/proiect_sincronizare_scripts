@@ -192,7 +192,7 @@ def get_note_sync(cnt_note):
     conn.close()
     return rows
 
-def get_status_sync(cnt_status):
+def get_status_sync_to_jira(cnt_status):
     conn = conn_db()
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM status_sync_to_jira  WHERE id > %s ORDER BY id ASC;",
